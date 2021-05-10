@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>We Keep</title>
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+<link rel="icon" href="{% static 'img/We Keep-logos_black.png' %}">
+<link rel="stylesheet" href="{% static 'open-iconic-master/font/css/open-iconic-bootstrap.css' %}">
+</head>
+
+<body>
+<div class="container">
+    <nav>
+        <a href="{% url 'home' %}"><img src="{% static 'img/We Keep-logos_black.png'%}" style="padding-left: 30px;" width="100" height="80" ></a>
+        <ul>
+            {% if user.is_authenticated %}
+            <li><a href="javascript:{document.getElementById('logout').submit()}"> Logout</a></li>
+            <form action="{% url 'logout' %}" id="logout" method="post" >
+            {% csrf_token %}
+            <input type="hidden" >
+            </form>
+            {% else %}
+            <li><a href="{% url 'signup' %}" >Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+{% block content %}
+    {% endblock %}
+</div>
+
+
+
+</body>
+</html>

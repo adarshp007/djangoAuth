@@ -1,0 +1,49 @@
+
+{% extends 'home.html' %}
+{% block content %}
+    <div class="box">
+    <div class="content">
+        <form action="{% url 'signup' %}" method="post">
+            {% csrf_token %}
+            <h1 style="color:#0899C7 ">Sign Up!</h1>
+        <br>
+        <br>
+        <h3>First Name</h3>
+
+        <input type="text" name="fname" required>
+        <br>
+         <br>
+        <h3>Last Name</h3>
+
+        <input type="text" name="lname">
+        <br>
+            <br>
+        <h3>Email</h3>
+
+        <input type="email" name="email" required>
+        <br>
+            <br>
+        <h3>Password</h3>
+
+        <input type="password" name="password1" required>
+        <br>
+         <br>
+        <h3>Confirm Password</h3>
+
+        <input type="password" name="password2">
+        <br>
+        <br>
+        <input type="submit" value="Signup" name="b1" style="width: 150px;height: 30px;color: white;background-color: #0899C7;font-weight: 600;border-radius: 5px;">
+    </form>
+        <div>
+        <span  style="color: red;">
+        <br>
+        <br>
+            {% if error %}
+                {{ error }}
+            {% endif %}
+        </span>
+        </div>
+    </div>
+    </div>
+{% endblock %}
